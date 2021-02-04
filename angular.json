@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Angular-Dynamic-Field-App"
+    }
+  },
+  "defaultProject": "Angular-Dynamic-Field-App",
+  "cli": {
+    "analytics": "1c35448c-7425-4054-91ab-4de2c2bdd444"
+  }
 }

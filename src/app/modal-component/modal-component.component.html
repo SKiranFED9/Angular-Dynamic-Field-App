@@ -1,0 +1,49 @@
+
+<button class="btn btn-sm btn-primary" (click)="open(content)">Open Form</button>
+
+<!--SO POPUP-->
+
+<ng-template #content let-modal>
+  <form [formGroup]="revenueGroupForm" (ngSubmit)="onSubmit(revenueGroupForm.value)">
+    <div class="modal-header" style="padding: 5px;">
+      <h5 class="modal-title" style="font-size: 13px;padding-left: 5px;padding-top: 5px;" id="modal-basic-title">Add Revenue Group</h5>
+    </div>
+    <div class="modal-body">
+        <div  formArrayName="revenueGroupData">
+          <div *ngFor="let employee of getPhonesFormControls(); let empIndex=index">
+            <table [formGroupName]="empIndex" class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="text" class="form-control" formControlName="parameter_1" placeholder="aff_sub -">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" formControlName="parameter_2" placeholder="is -">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" formControlName="insert_parameter" placeholder="insert parameter" >
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-primary" (click)="addRevenueField()">+</button>
+                  </td>
+                  <td *ngIf="empIndex">
+                    <button type="button"  class="btn btn-sm btn-danger" (click)="removeRevenueField(empIndex)"   >&times;</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <label>Inserted Value Details are below:</label>
+        </div>
+      {{this.revenueGroupForm.value | json}}
+    </div>
+    <div class="modal-footer" style="display: inline-block;padding: 0px;">
+      <button type="submit" class="btn btn-primary btn-sm">Save</button>
+      <button type="button" class="btn btn-danger btn-sm" (click)="modal.dismiss('Cross click'); clearDefaultFields()">Cancel</button>
+    </div>
+  </form>
+</ng-template>
+
+<!--EO POPUP-->
